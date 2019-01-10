@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := release
 
-all: hekate atmos hbloader hbmenu ftpd netcheat mitm appstore updater cfwsettings goldleaf edizon
+all: hekate atmos hbloader hbmenu ftpd netcheat mitm appstore updater cfwsettings goldleaf edizon lockpick
 
 
 hekate:
@@ -46,6 +46,9 @@ goldleaf:
 
 edizon:
 	$(MAKE) -C apps/EdiZon
+
+lockpick:
+	$(MAKE) -C apps/Lockpick
 
 stic:
 	mkdir out
@@ -118,6 +121,9 @@ stic:
 
 	mkdir out/sd/switch/EdiZon
 	cp apps/EdiZon/out/EdiZon.nro out/sd/switch/EdiZon/
+
+	mkdir out/sd/switch/Lockpick
+	cp apps/EdiZon/out/Lockpick.nro out/sd/switch/Lockpick/
 
 
 

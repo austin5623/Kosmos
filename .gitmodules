@@ -34,3 +34,6 @@
 [submodule "apps/EdiZon"]
 	path = apps/EdiZon
 	url = https://github.com/WerWolv98/EdiZon.git
+[submodule "apps/Lockpick"]
+	path = apps/Lockpick
+	url = https://github.com/shchmue/Lockpick
