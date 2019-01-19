@@ -6,6 +6,10 @@ all: hekate atmos hbloader hbmenu ftpd netcheat mitm appstore updater cfwsetting
 hekate:
 	$(MAKE) -C apps/hekate all
 
+	mkdir out/sd/bootloader/sys -p
+	cp apps/hekate/output/hekate.bin out/
+	cp apps/hekate/output/libsys_lp0.bso out/sd/bootloader/sys/
+
 atmos:
 	$(MAKE) -C apps/Atmosphere\exosphere
 	$(MAKE) -C apps/Atmosphere\stratosphere\libstratosphere
@@ -17,61 +21,11 @@ atmos:
 	$(MAKE) -C apps/Atmosphere\stratosphere\set_mitm
 	$(MAKE) -C apps/Atmosphere\stratosphere\sm
 
-hbloader:
-	$(MAKE) -C apps/nx-hbloader
-
-hbmenu:
-	$(MAKE) -C apps/nx-hbmenu nx
-
-ftpd:
-	$(MAKE) -C apps/sys-ftpd
-
-netcheat:
-	$(MAKE) -C apps/sys-netcheat
-
-mitm:
-	$(MAKE) -C apps/ldn_mitm
-
-appstore:
-	$(MAKE) -C apps/hb-appstore -f Makefile.switch
-
-updater:
-	$(MAKE) -C apps/Kosmos-Updater
-
-cfwsettings:
-	$(MAKE) -C apps/CFW-Settings
-
-goldleaf:
-	$(MAKE) -C apps/Goldleaf/Goldleaf
-
-edizon:
-	$(MAKE) -C apps/EdiZon
-
-lockpick:
-	$(MAKE) -C apps/Lockpick
-
-stic:
-	mkdir out
-	mkdir out/sd
-	mkdir out/sd/atmosphere
-	mkdir out/sd/bootloader
-	mkdir out/sd/bootloader/sys
-	mkdir out/sd/modules
-	mkdir out/sd/switch
-
-	cp -r static/* out/sd/
-
-
-
-	cp apps/hekate/output/hekate.bin out/
-	cp apps/hekate/output/libsys_lp0.bso out/sd/bootloader/sys/
-
-
-	mkdir out/sd/modules/required
-	mkdir out/sd/atmosphere/titles
-	mkdir out/sd/atmosphere/titles/0100000000000036
-	mkdir out/sd/atmosphere/titles/0100000000000034
-	mkdir out/sd/atmosphere/titles/0100000000000032
+	mkdir out/sd/modules/required -p
+	mkdir out/sd/atmosphere/titles -p
+	mkdir out/sd/atmosphere/titles/0100000000000036 -p
+	mkdir out/sd/atmosphere/titles/0100000000000034 -p
+	mkdir out/sd/atmosphere/titles/0100000000000032 -p
 
 	cp apps/Atmosphere/common/defaults/loader.ini out/sd/atmosphere/loader.ini
 	cp apps/Atmosphere/stratosphere/creport/creport.nsp out/sd/atmosphere/titles/0100000000000036/exefs.nsp
@@ -82,52 +36,82 @@ stic:
 	cp apps/Atmosphere/stratosphere/pm/pm.kip out/sd/modules/required/
 	cp apps/Atmosphere/stratosphere/sm/sm.kip out/sd/modules/required/
 
+hbloader:
+	$(MAKE) -C apps/nx-hbloader
 
+	mkdir out/sd/atmosphere/ -p
 	cp apps/nx-hbloader/hbl.nsp out/sd/atmosphere/
 
+hbmenu:
+	$(MAKE) -C apps/nx-hbmenu nx
 
+	mkdir out/sd/ -p
 	cp apps/nx-hbmenu/nx-hbmenu.nro out/sd/hbmenu.nro
 
+ftpd:
+	$(MAKE) -C apps/sys-ftpd
 
-	mkdir out/sd/ftpd
-	mkdir out/sd/modules/sys-ftpd
-	cp apps/sys-ftpd/sys-ftpd.kip out/sd/modules/sys-ftpd/
-	cp apps/sys-ftpd/sd_card/ftpd/* out/sd/ftpd/
+	#mkdir out/sd/modules -p
+	#mkdir out/sd/ftpd -p
+	#mkdir out/sd/modules/sys-ftpd -p
+	#cp apps/sys-ftpd/sys-ftpd.kip out/sd/modules/sys-ftpd/
+	#cp apps/sys-ftpd/sd_card/ftpd/* out/sd/ftpd/
 
-
-	mkdir out/sd/modules/sys-netcheat
+netcheat:
+	$(MAKE) -C apps/sys-netcheat
+	
+	mkdir out/sd/modules -p
+	mkdir out/sd/modules/sys-netcheat -p
 	cp apps/sys-netcheat/sys-netcheat.kip out/sd/modules/sys-netcheat/
 
-
-	mkdir out/sd/modules/ldn_mitm
+mitm:
+	$(MAKE) -C apps/ldn_mitm
+	
+	mkdir out/sd/modules -p
+	mkdir out/sd/modules/ldn_mitm -p
 	cp apps/ldn_mitm/ldn_mitm/ldn_mitm.kip out/sd/modules/ldn_mitm/
 
+appstore:
+	$(MAKE) -C apps/hb-appstore -f Makefile.switch
 
-	mkdir out/sd/switch/appstore
+	mkdir out/sd/switch -p
+	mkdir out/sd/switch/appstore -p
 	cp apps/hb-appstore/appstore.nro out/sd/switch/appstore/
 
+updater:
+	$(MAKE) -C apps/Kosmos-Updater
 
-	mkdir out/sd/switch/KosmosUpdater
+	mkdir out/sd/switch -p
+	mkdir out/sd/switch/KosmosUpdater -p
 	cp apps/Kosmos-Updater/dist/Kosmos-Updater.nro out/sd/switch/KosmosUpdater/
 
+cfwsettings:
+	$(MAKE) -C apps/CFW-Settings
 
-	mkdir out/sd/switch/CFWSettings
+	mkdir out/sd/switch -p
+	mkdir out/sd/switch/CFWSettings -p
 	cp apps/CFW-Settings/out/CFW-Settings.nro out/sd/switch/CFWSettings/
 
+goldleaf:
+	$(MAKE) -C apps/Goldleaf/Goldleaf
 
-	mkdir out/sd/switch/Goldleaf
+	mkdir out/sd/switch -p
+	mkdir out/sd/switch/Goldleaf -p
 	cp apps/Goldleaf/Goldleaf/Output/Goldleaf.nro out/sd/switch/Goldleaf/
 
+edizon:
+	$(MAKE) -C apps/EdiZon
 
-	mkdir out/sd/switch/EdiZon
+	mkdir out/sd/switch -p
+	mkdir out/sd/switch/EdiZon -p
 	cp apps/EdiZon/out/EdiZon.nro out/sd/switch/EdiZon/
 
-	mkdir out/sd/switch/Lockpick
-	cp apps/EdiZon/out/Lockpick.nro out/sd/switch/Lockpick/
+lockpick:
+	$(MAKE) -C apps/Lockpick
 
-
-
-	cd out; zip -r -9 ../out.zip ./*; cd ../;
+	mkdir out/sd/switch -p
+	mkdir out/sd/switch/Lockpick -p
+	cp apps/Lockpick/out/Lockpick.nro out/sd/switch/Lockpick/
 
 
 clean:
@@ -142,13 +126,14 @@ clean:
 	$(MAKE) -C apps/EdiZon clean
 	$(MAKE) -C apps/CFW-Settings clean
 	$(MAKE) -C apps/Kosmos-Updater clean
-	rm -rf out
-	rm -f out.zip
+	rm -rf out*
+	#rm -f out.zip
 
 release:
 	git submodule foreach 'git checkout $$(git describe --abbrev=0 --tag)'
 	$(MAKE) all
-	$(MAKE) stic
+	cp -r static/* out/sd/
+	cd out; zip -r -9 ../out.zip ./*; cd ../;
 
 set-release: clean
 	git submodule foreach 'git checkout $$(git describe --abbrev=0 --tag)'
@@ -156,7 +141,8 @@ set-release: clean
 nightly:
 	git submodule update --init --force --remote --recursive
 	$(MAKE) all
-	$(MAKE) stic
+	cp -r static/* out/sd/
+	cd out; zip -r -9 ../out.zip ./*; cd ../;
 
 set-nightly: clean
 	git submodule update --init --force --remote --recursive
