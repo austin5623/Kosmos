@@ -33,7 +33,13 @@ This handy All-in-One package includes everything you need to run Hekate / Atmos
 4. Profit!
 
 ## How to build
-Coming soon
+Set up a DevkitPRO enviroment as per [this](https://switchbrew.org/wiki/Setting_up_Development_Environment)
+Clone the repo recursively with `git clone https://github.com/AtlasNX/Kosmos -b Autobuild --recursive`
+Open an Msys(Devkit) or bash shell and install the required dependencies with `pacman -S libnx switch-tools switch-portlibs \
+    switch-freetype switch-libconfig switch-libjpeg-turbo switch-zlib \
+    switch-bzip2 switch-sdl2_gfx switch-sdl2_image switch-sdl2_ttf switch-libpng switch-mesa`
+Run `make release` to build everything from the latest release or `make nightly` to builds everything from the latest commit
+This should take a while. After it is done, out files should be in a newly created directory called `out`
 
 ## Featuring
 * [Atmosphère](https://github.com/Atmosphere-NX/Atmosphere)
