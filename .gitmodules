@@ -30,10 +30,10 @@
 	url = https://github.com/AtlasNX/CFW-Settings.git
 [submodule "apps/Goldleaf"]
 	path = apps/Goldleaf
-	url = https://github.com/XorTroll/Goldleaf
+	url = https://github.com/XorTroll/Goldleaf.git
 [submodule "apps/EdiZon"]
 	path = apps/EdiZon
 	url = https://github.com/WerWolv98/EdiZon.git
 [submodule "apps/Lockpick"]
 	path = apps/Lockpick
-	url = https://github.com/shchmue/Lockpick
+	url = https://github.com/shchmue/Lockpick.git
